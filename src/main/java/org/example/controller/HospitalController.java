@@ -18,6 +18,8 @@ public class HospitalController {
 
     public void registerPatient(String firstName, String lastName, String dob, String gender, String address, String phone, String email, String emergencyContact) {
         Patient p = new Patient();
+
+        // Set the user inputs to their respective variables
         p.setFirstName(firstName);
         p.setLastName(lastName);
         p.setDateOfBirth(String.valueOf(LocalDate.parse(dob)));
@@ -49,11 +51,21 @@ public class HospitalController {
 
 
     public void addDoctor(String firstName, String lastName, String specialty, String phone, String email) {
-        Doctor d  = new Doctor(firstName, lastName, specialty, phone, email);
+        Doctor d  = new Doctor();
+
+        // Set the user inputs to their respective variables
+        d.setFirstName(firstName);
+        d.setLastName(lastName);
+        d.setSpeciality(specialty);
+        d.setPhoneNumber(phone);
+        d.setEmail(email);
+
         Transaction tx = null;
         Session session  = null;
+        
         try {
             session = HibernateUtil.getSessionFactory().openSession();
+
             tx = session.beginTransaction();
 
             session.save(d);
