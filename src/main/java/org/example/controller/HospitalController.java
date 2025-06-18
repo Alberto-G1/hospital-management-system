@@ -3,6 +3,7 @@ package org.example.controller;
 import org.example.models.Appointment;
 import org.example.models.Doctor;
 import org.example.models.Patient;
+import org.example.models.enums.Availability;
 import org.example.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -50,7 +51,7 @@ public class HospitalController {
     }
 
 
-    public void addDoctor(String firstName, String lastName, String specialty, String phone, String email) {
+    public void addDoctor(String firstName, String lastName, String specialty, String phone, String email, Availability isAvailable) {
         Doctor d  = new Doctor();
 
         // Set the user inputs to their respective variables
@@ -59,10 +60,11 @@ public class HospitalController {
         d.setSpeciality(specialty);
         d.setPhoneNumber(phone);
         d.setEmail(email);
+        d.setIsAvailable(isAvailable);
 
         Transaction tx = null;
         Session session  = null;
-        
+
         try {
             session = HibernateUtil.getSessionFactory().openSession();
 

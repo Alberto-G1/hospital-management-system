@@ -43,7 +43,7 @@ public class Doctor {
 
     public void setEmail(String email) { this.email = email; }
 
-    public void setIsAvailable(Availability isAvailable) { this.isAvailable = isAvailable; }
+    public void setIsAvailable(Availability isAvailable) { this.isAvailable = Availability.UNAVAILABLE; }
 
     public int getDoctorID() { return doctorID; }
 
