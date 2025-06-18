@@ -1,6 +1,7 @@
 package org.example.views;
 
 import org.example.controller.HospitalController;
+import org.example.models.enums.Availability;
 
 import java.util.Scanner;
 
@@ -81,7 +82,8 @@ public class HospitalView {
         String phone = scanner.nextLine();
         System.out.print("Email: ");
         String email = scanner.nextLine();
-        controller.addDoctor(firstName, lastName, specialty, phone, email);
+        Availability isAvailable = Availability.UNAVAILABLE;
+        controller.addDoctor(firstName, lastName, specialty, phone, email, isAvailable);
     }
 
     private void bookAppointmentView() {
