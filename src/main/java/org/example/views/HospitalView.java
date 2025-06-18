@@ -16,7 +16,8 @@ public class HospitalView {
     }
 
     public void displayMenu() {
-        int choice;
+        String choice;
+        boolean running = true;
         do {
             System.out.println("\n--- CityCare General Hospital ---");
             System.out.println("1. Register Patient");
@@ -26,29 +27,34 @@ public class HospitalView {
             System.out.println("5. List Doctors");
             System.out.println("0. Exit");
             System.out.print("Enter choice: ");
-            choice = scanner.nextInt();
-            scanner.nextLine();
+            choice = scanner.nextLine();
 
             switch (choice) {
-                case 1:
+                case "1":
                     registerPatientView();
                     break;
-                case 2:
+                case "2":
                     addDoctorView();
                     break;
-                case 3:
+                case "3":
                     bookAppointmentView();
                     break;
-                case 4:
+                case "4":
                     System.out.println("List of patients coming soon....");
                     //controller.listPatients();
                     break;
-                case 5:
+                case "5":
                     System.out.println("List of Doctors coming soon.....");
                     //controller.listDoctors();
                     break;
+                case "0":
+                    running = false;
+                    System.out.println("Exiting system......");
+                    break;
+                default:
+                    System.out.println("Invalid choice....Please try again.");
             }
-        } while (choice != 0);
+        } while (running);
     }
 
     private void registerPatientView() {
