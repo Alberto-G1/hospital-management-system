@@ -92,17 +92,36 @@ public class HospitalView {
 
     private void bookAppointmentView() {
         controller.listPatients();
-        System.out.print("Enter patient ID: ");
-        int patientId = scanner.nextInt();
+
+        int patientId;
+        while (true) {
+            System.out.print("Enter patient ID: ");
+            try {
+                patientId = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Patient ID must be a number........ Please try again.");
+            }
+        }
 
         controller.listDoctors();
-        System.out.print("Enter doctor ID: ");
-        int doctorId = scanner.nextInt();
-        scanner.nextLine();
+
+        int doctorId;
+        while (true) {
+            System.out.print("Enter doctor ID: ");
+            try {
+                doctorId = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Doctor ID must be a number......... Please try again.");
+            }
+        }
 
         System.out.print("Reason for appointment: ");
         String reason = scanner.nextLine();
+
         controller.bookAppointment(patientId, doctorId, reason);
     }
+
 }
 

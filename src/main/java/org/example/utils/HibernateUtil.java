@@ -2,11 +2,9 @@ package org.example.utils;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
     private static final SessionFactory sessionFactory;
-    Configuration cfg = new AnnotationConfiguration().configure();
 
 
     static {
