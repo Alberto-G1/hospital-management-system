@@ -15,6 +15,8 @@ public class Doctor {
     private String speciality;
     private String phoneNumber;
     private String email;
+    @Enumerated(EnumType.STRING) // store as readable text
+    @Column(length = 20)
     private Availability isAvailable;
 
     public Doctor(int doctorID, String firstName, String lastName, String speciality, String phoneNumber, String email) {

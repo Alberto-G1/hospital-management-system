@@ -16,7 +16,8 @@ public class HospitalView {
     }
 
     public void displayMenu() {
-        int choice;
+        String choice;
+        boolean running = true;
         do {
             System.out.println("\n--- CityCare General Hospital ---");
             System.out.println("1. Register Patient");
@@ -26,29 +27,32 @@ public class HospitalView {
             System.out.println("5. List Doctors");
             System.out.println("0. Exit");
             System.out.print("Enter choice: ");
-            choice = scanner.nextInt();
-            scanner.nextLine();
+            choice = scanner.nextLine();
 
             switch (choice) {
-                case 1:
+                case "1":
                     registerPatientView();
                     break;
-                case 2:
+                case "2":
                     addDoctorView();
                     break;
-                case 3:
+                case "3":
                     bookAppointmentView();
                     break;
-                case 4:
-                    System.out.println("List of patients coming soon....");
-                    //controller.listPatients();
+                case "4":
+                    controller.listPatients();
                     break;
-                case 5:
-                    System.out.println("List of Doctors coming soon.....");
-                    //controller.listDoctors();
+                case "5":
+                    controller.listDoctors();
                     break;
+                case "0":
+                    running = false;
+                    System.out.println("Exiting system......");
+                    break;
+                default:
+                    System.out.println("Invalid choice....Please try again.");
             }
-        } while (choice != 0);
+        } while (running);
     }
 
     private void registerPatientView() {
@@ -87,20 +91,18 @@ public class HospitalView {
     }
 
     private void bookAppointmentView() {
-        //controller.listPatients();
+        controller.listPatients();
         System.out.print("Enter patient ID: ");
-        int pId = scanner.nextInt();
-        //controller.listDoctors();
+        int patientId = scanner.nextInt();
+
+        controller.listDoctors();
         System.out.print("Enter doctor ID: ");
-        int dId = scanner.nextInt();
+        int doctorId = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Appointment date (YYYY-MM-DD): ");
-        String date = scanner.nextLine();
-        System.out.print("Appointment time (HH:MM): ");
-        String time = scanner.nextLine();
+
         System.out.print("Reason for appointment: ");
         String reason = scanner.nextLine();
-        controller.bookAppointment(pId, dId, date, time, reason);
+        controller.bookAppointment(patientId, doctorId, reason);
     }
 }
 
