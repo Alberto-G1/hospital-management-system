@@ -1,7 +1,7 @@
 package org.example.views;
 
 import org.example.controller.HospitalController;
-import org.example.models.enums.Availability;
+import org.example.enums.Availability;
 
 import java.util.Scanner;
 

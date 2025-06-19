@@ -3,7 +3,7 @@ package org.example.controller;
 import org.example.models.Appointment;
 import org.example.models.Doctor;
 import org.example.models.Patient;
-import org.example.models.enums.Availability;
+import org.example.enums.Availability;
 import org.example.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
