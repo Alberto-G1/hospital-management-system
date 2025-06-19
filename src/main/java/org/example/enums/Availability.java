@@ -1,4 +1,4 @@
-package org.example.models.enums;
+package org.example.enums;
 
 public enum Availability {
     AVAILABLE,

@@ -1,6 +1,6 @@
 package org.example.models;
 
-import org.example.models.enums.Availability;
+import org.example.enums.Availability;
 
 import javax.persistence.*;
 
