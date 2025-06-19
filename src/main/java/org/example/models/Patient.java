@@ -31,8 +31,6 @@ public class Patient {
         this.emergencyContact = emergencyContact;
     }
 
-//    public Patient(String firstName, String lastName, String dob, String gender, String address, String phone, String email, String emergencyContact) {
-//    }
 
     public Patient() {
 

@@ -87,30 +87,39 @@ public class HospitalController {
 //        System.out.println("Doctor added: ID=" + id);
     }
 
-    public void bookAppointment(int patientId, int doctorId, String date, String time,
-                                String reason) {
-        Appointment appointment = new Appointment(patientId, doctorId, date, time, reason);
+    public void bookAppointment(int patientId, int doctorId, String reason) {
         Transaction tx = null;
         Session session = null;
 
         try {
-            session  = HibernateUtil.getSessionFactory().openSession();
+            session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
 
+            // Fetch existing patient and doctor
+            Patient patient = (Patient) session.get(Patient.class, patientId);
+            Doctor doctor = (Doctor) session.get(Doctor.class, doctorId);
+
+            // Validate existence
+            if (patient == null || doctor == null) {
+                System.out.println("Invalid Patient or Doctor ID.");
+                return;
+            }
+
+            // Create and save the appointment with actual entities
+            Appointment appointment = new Appointment(patient, doctor, reason);
             session.save(appointment);
 
             tx.commit();
 
-            System.out.println("Appointment booked successfully.....");
-        }catch (Exception e){
-            if (tx != null) e.printStackTrace();
-        }finally {
+            System.out.println("✔✔Appointment booked successfully......");
+        } catch (Exception e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
             if (session != null) session.close();
         }
-//        int id = appointments.size() + 1;
-//        appointments.add(new Appointment(id, patientId, date, time,reason));
-//        System.out.println("Appointment booked successfully.");
     }
+
 
 //    public void listPatients() {
 //        for (Patient p : patients) {

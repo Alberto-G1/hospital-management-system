@@ -40,12 +40,10 @@ public class HospitalView {
                     bookAppointmentView();
                     break;
                 case "4":
-                    System.out.println("List of patients coming soon....");
-                    //controller.listPatients();
+                    controller.listPatients();
                     break;
                 case "5":
-                    System.out.println("List of Doctors coming soon.....");
-                    //controller.listDoctors();
+                    controller.listDoctors();
                     break;
                 case "0":
                     running = false;
@@ -93,20 +91,18 @@ public class HospitalView {
     }
 
     private void bookAppointmentView() {
-        //controller.listPatients();
+        controller.listPatients();
         System.out.print("Enter patient ID: ");
-        int pId = scanner.nextInt();
-        //controller.listDoctors();
+        int patientId = scanner.nextInt();
+
+        controller.listDoctors();
         System.out.print("Enter doctor ID: ");
-        int dId = scanner.nextInt();
+        int doctorId = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Appointment date (YYYY-MM-DD): ");
-        String date = scanner.nextLine();
-        System.out.print("Appointment time (HH:MM): ");
-        String time = scanner.nextLine();
+
         System.out.print("Reason for appointment: ");
         String reason = scanner.nextLine();
-        controller.bookAppointment(pId, dId, date, time, reason);
+        controller.bookAppointment(patientId, doctorId, reason);
     }
 }
 
