@@ -23,7 +23,7 @@ public class HospitalController {
         // Set the user inputs to their respective variables
         p.setFirstName(firstName);
         p.setLastName(lastName);
-        p.setDateOfBirth(String.valueOf(LocalDate.parse(dob)));
+        p.setDateOfBirth(dob.toString());
         p.setGender(gender);
         p.setAddress(address);
         p.setPhoneNumber(phone);
@@ -42,7 +42,7 @@ public class HospitalController {
 
             System.out.println("Patient " + p.getPatientID() + " successfully saved ");
         } catch (Exception e) {
-            if (tx != null) tx.rollback();
+            if (tx != null) tx.rollback(); // Undoes the partial save
             e.printStackTrace();
         } finally {
             if (session != null) session.close();
