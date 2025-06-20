@@ -3,6 +3,8 @@ package org.example.views;
 import org.example.controller.HospitalController;
 import org.example.enums.Availability;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 
@@ -60,8 +62,18 @@ public class HospitalView {
         String firstName = scanner.nextLine();
         System.out.print("Last name: ");
         String lastName = scanner.nextLine();
-        System.out.print("Date of birth (YYYY-MM-DD): ");
-        String dob = scanner.nextLine();
+        String dob;
+        LocalDate parsedDate;
+        while (true) {
+            System.out.print("Date of birth (YYYY-MM-DD): ");
+            dob = scanner.nextLine();
+            try {
+                parsedDate = LocalDate.parse(dob);
+                break;
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date format. Please use YYYY-MM-DD (e.g., 1999-03-27).");
+            }
+        }
         System.out.print("Gender: ");
         String gender = scanner.nextLine();
         System.out.print("Address: ");

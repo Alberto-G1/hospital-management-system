@@ -18,7 +18,7 @@
         <!-- Logging -->
 <!--        <property name="show_sql">false</property>-->
 <!--        <property name="format_sql">true</property>-->
-
+        
         <!-- Annotated Model Classes -->
         <mapping class="org.example.models.Patient"/>
         <mapping class="org.example.models.Doctor"/>
