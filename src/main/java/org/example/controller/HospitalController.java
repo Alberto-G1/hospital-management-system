@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.enums.Gender;
 import org.example.models.Appointment;
 import org.example.models.Doctor;
 import org.example.models.Patient;
@@ -24,7 +25,7 @@ public class HospitalController {
         p.setFirstName(firstName);
         p.setLastName(lastName);
         p.setDateOfBirth(dob.toString());
-        p.setGender(gender);
+        p.setGender(Gender.valueOf(gender));
         p.setAddress(address);
         p.setPhoneNumber(phone);
         p.setEmail(email);
@@ -106,7 +107,7 @@ public class HospitalController {
             }
 
             // Create and save the appointment with actual entities
-            Appointment appointment = new Appointment(patient, doctor, reason);
+            Appointment appointment = new Appointment();
             session.save(appointment);
 
             tx.commit();
