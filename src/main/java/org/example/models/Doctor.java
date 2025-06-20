@@ -7,27 +7,28 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Doctors")
 public class Doctor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int doctorID;
-    private String firstName;
-    private String lastName;
-    private String speciality;
-    private String phoneNumber;
-    private String email;
-    @Enumerated(EnumType.STRING) // store as readable text
-    @Column(length = 20)
-    private Availability isAvailable;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private int doctorID;
 
-    public Doctor(int doctorID, String firstName, String lastName, String speciality, String phoneNumber, String email) {
-        this.doctorID = doctorID;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.speciality = speciality;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.isAvailable = Availability.UNAVAILABLE;
-    }
+        @Column(nullable = false)
+        private String firstName;
+
+        @Column(nullable = false)
+        private String lastName;
+
+        @Column(nullable = false)
+        private String speciality;
+
+        @Column(nullable = false)
+        private String phoneNumber;
+
+        @Column(nullable = false, unique = true)
+        private String email;
+
+        @Enumerated(EnumType.STRING)
+        private Availability isAvailable = Availability.UNAVAILABLE;
+
 
     public Doctor() {
 
