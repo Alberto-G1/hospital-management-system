@@ -13,15 +13,16 @@
 
         <!-- Hibernate Settings -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
-        <property name="hibernate.hbm2ddl.auto">update</property> <!-- use update/create-drop in dev -->
+        <property name="hibernate.hbm2ddl.auto">create</property> <!-- use update/create-drop in dev -->
 
         <!-- Logging -->
-<!--        <property name="show_sql">false</property>-->
-<!--        <property name="format_sql">true</property>-->
+        <property name="show_sql">false</property>
+        <property name="format_sql">true</property>
 
         <!-- Annotated Model Classes -->
         <mapping class="org.example.models.Patient"/>
         <mapping class="org.example.models.Doctor"/>
         <mapping class="org.example.models.Appointment"/>
+        <mapping class="org.example.models.User"/>
     </session-factory>
 </hibernate-configuration>

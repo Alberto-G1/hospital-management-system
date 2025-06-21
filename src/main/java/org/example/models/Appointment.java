@@ -37,13 +37,10 @@ public class Appointment {
     // Constructors
     public Appointment() {}
 
-    public Appointment(Patient patient, Doctor doctor, Date appointmentDate, Time appointmentTime, String reason) {
-        this.patient = patient;
-        this.doctor = doctor;
-        this.appointmentDate = appointmentDate;
-        this.appointmentTime = appointmentTime;
-        this.reason = reason;
-        this.status = AppointmentStatus.SCHEDULED;
+    public Appointment(Patient p, Doctor d, String r) {
+        this.patient = p;
+        this.doctor = d;
+        this.reason = r;
     }
 
     // Getters and setters
