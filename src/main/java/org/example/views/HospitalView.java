@@ -36,18 +36,45 @@ public class HospitalView{
     }
 
     private void registerUser() {
-        System.out.print("Username: ");
-        String username = scanner.nextLine();
-        System.out.print("Password: ");
-        String password = scanner.nextLine();
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        System.out.println("Select role (ADMIN, DOCTOR, PATIENT): ");
-        String roleInput = scanner.nextLine().toUpperCase();
-        Role role = Role.valueOf(roleInput);
-//        user.setRole(Role role);
-        userController.register(user);
+        String username = "";
+        while (username.isEmpty()) {
+            System.out.print("Username: ");
+            username = scanner.nextLine().trim();
+            if (username.isEmpty()) {
+                System.out.println("❌ Username cannot be empty.");
+            }
+        }
+
+        String password = "";
+        while (password.isEmpty()) {
+            System.out.print("Password: ");
+            password = scanner.nextLine().trim();
+            if (password.isEmpty()) {
+                System.out.println("❌ Password cannot be empty.");
+            }
+        }
+
+        String email = "";
+        while (email.isEmpty()) {
+            System.out.print("Email: ");
+            email = scanner.nextLine().trim();
+            if (email.isEmpty()) {
+                System.out.println("❌ Email cannot be empty.");
+            }
+        }
+
+        Role role = null;
+        while (role == null) {
+            System.out.print("Role (ADMIN, DOCTOR, PATIENT): ");
+            String roleInput = scanner.nextLine().trim().toUpperCase();
+            try {
+                role = Role.valueOf(roleInput);
+            } catch (IllegalArgumentException e) {
+                System.out.println("❌ Invalid role. Please choose ADMIN, DOCTOR, or PATIENT.");
+            }
+        }
+
+        userController.register(username, password, email, role);
     }
 
     private boolean loginUser() {
